@@ -11,7 +11,7 @@ import java.util.Scanner;
  * output: from the Euclidian Algorithm --> gcd(a, b)
  * output: as per Bezout's Identity --> gcd(a, b) = sa + tb
  *
- * to complile in command line: javac EuclidsAlgorithm.java
+ * to compile in command line: javac EuclidsAlgorithm.java
  *
  * to run program: java EuclidsAlgorithm
  */
@@ -19,37 +19,41 @@ public class EuclidsAlgorithm {
 
     //CLASS VARIABLES:
     private static Scanner scanner = new Scanner(System.in);
-    static int a = 0; //first user-input number
-    static int b = 0; //second user-input number
-    static int s = 0; //the Bezout's coefficient to a
-    static int t = 0; //the Bezout's coefficient to b
-    static int d = 0; //the value of gcd(a , b)
+    private static int a = 0; //first user-input number
+    private static int b = 0; //second user-input number
+    private static int s = 0; //the Bezout's coefficient to a
+    private static int t = 0; //the Bezout's coefficient to b
+    private static int d = 0; //the value of gcd(a , b)
+
 
     //get user input for a and b:
-    static void getInput () {
+    private static void getInput() {
         System.out.println("Enter the positive integer for \"a\": ");
         a = scanner.nextInt();
         scanner.nextLine();
         System.out.println("Enter the positive integer for \"b\": ");
         b = scanner.nextInt();
         scanner.nextLine();
-    }
+    }//END method getInput()................................................
 
-    //build an array to store [d, s, t] for each step
-    //d = gcd(a, b) = sa + tb
+
+    //build an array to store [d, s, t] for each recursion step:
+    //(d = gcd(a, b) = sa + tb) :
     private static int[] gcd(int a, int b) {
     //exit condition:
         if (b == 0) {
             return new int[] { a, 1, 0 };
         }
-    //run the recursions until you get to the exit condition:
+    //run another recursion until you get to the exit condition:
         int[] store = gcd(b, a % b);
-    //assign the final values to the class variables from each recursion step:
+    //assign the values from each recursion step to the class variables as
+    //    you unwind the recursion:
         d = store[0];
         s = store[2];
         t = store[1] - (a / b) * store[2];
         return new int[] { d, s, t };
-    }
+    }//END method gcd().....................................................
+
 
     //there are no command line args:
     public static void main(String[] args) {
@@ -65,6 +69,5 @@ public class EuclidsAlgorithm {
         System.out.println("s(a) + t(b) = gcd(a, b)");
         System.out.println(s + "(" + a + ") + " + t +
                 "(" + b + ") = " + d);
-    }//END main()
+    }//END main()..........................................................
 }//END class EuclidsAlgorithm
-
