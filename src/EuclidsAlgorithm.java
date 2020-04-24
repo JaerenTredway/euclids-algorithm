@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * @author Jaeren Tredway
+ * @author Jaeren W Tredway
  * @version 1.0 for CS261 Spring 2020
  *
  * This implements the extended Euclid's Algorithm to get gcd(a, b) and the
